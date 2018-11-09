@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: LearningYogi
+  companyName: learningyogi
   productName: RackkShop
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -152,7 +152,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.LearningYogi.RackkShop
     Standalone: com.Company.ProductName
-    iOS: com.LearningYogi.RackkShop
+    iOS: com.learningyogi.RackkShop
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
