@@ -46,7 +46,7 @@ public class ScanManager : MonoBehaviour {
         {
             ScannerItem tmpScannerItem = item.GetComponent<ScannerItem>();
             Vector3 newPos = item.transform.position;
-            if(!tmpScannerItem.in_basket)
+            if(!tmpScannerItem.did_touch_scanner)
             {
                 newPos.x += 2.0f;
                 tmpScannerItem.newPosToMove = newPos;
