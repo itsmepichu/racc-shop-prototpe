@@ -1,0 +1,98 @@
+{
+  "Level1": {
+    "items": [
+      {
+        "item_name": "Apple - normal",
+        "item_price": 1,
+        "percentage": 10
+      },
+      {
+        "item_name": "Apple - fancy",
+        "item_price": 3,
+        "percentage": 10
+      },
+      {
+        "item_name": "Apple - green",
+        "item_price": 1,
+        "percentage": 20
+      },
+      {
+        "item_name": "Bananas",
+        "item_price": 2,
+        "percentage": 20
+      }
+    ],
+	"money": [
+	  {
+	    "money_name": "Note_5",
+		"value": 5,
+		"numbers": 1
+	  },
+	  {
+	    "money_name": "Coin_2",
+		"value": 2,
+		"numbers": 1
+	  },
+	  {
+	    "money_name": "Coin_1",
+		"value": 1,
+		"numbers": 3
+	  }
+	],
+	"budget": 10,
+	"percentage_threshold": 100
+  },
+  "Level2": {
+    "items": [
+      {
+        "item_name": "Apple - normal",
+        "item_price": 1,
+        "percentage": 5
+      },
+      {
+        "item_name": "Apple - fancy",
+        "item_price": 3,
+        "percentage": 5
+      },
+      {
+        "item_name": "Apple - 3 for 2",
+        "item_price": 2,
+        "percentage": 15
+      },
+      {
+        "item_name": "Bananas",
+        "item_price": 2,
+        "percentage": 20
+      },
+      {
+        "item_name": "Cake",
+        "item_price": 7,
+        "percentage": 5
+      },
+      {
+        "item_name": "Watermelon",
+        "item_price": 5,
+        "percentage": 30
+      }
+    ],
+	"money": [
+	  {
+	    "money_name": "Note_5",
+		"value": 5,
+		"numbers": 2
+	  },
+	  {
+	    "money_name": "Coin_2",
+		"value": 2,
+		"numbers": 1
+	  },
+	  {
+	    "money_name": "Coin_1",
+		"value": 1,
+		"numbers": 3
+	  }
+	],
+	"budget": 15,
+	"percentage_threshold": 100
+  }
+}

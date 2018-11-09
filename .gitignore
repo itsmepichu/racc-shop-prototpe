@@ -1,0 +1,10 @@
+*.csproj
+*.Editor.csproj
+Library/
+builds/
+Temp/
+*.vs
+.dtbcache
+*.apk
+.lock
+*.ide
