@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114103565233749822}
   m_Layer: 0
   m_Name: scanner_item
-  m_TagString: Untagged
+  m_TagString: ScannerItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,6 +73,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce811d7e74930264a83838a2d879d31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initPos: {x: 0, y: 0, z: 0}
+  newPosToMove: {x: 0, y: 0, z: 0}
+  scaleUpRatio: 0.2
+  scaleDownRatio: 0.085
+  is_item_selected: 0
+  did_touch_scanner: 0
+  in_basket: 0
+  move_this_item: 0
+  audio_manager: {fileID: 0}
+  scan_manager: {fileID: 0}
+  sprite_renderer: {fileID: 0}
 --- !u!212 &212050366506951198
 SpriteRenderer:
   m_ObjectHideFlags: 1

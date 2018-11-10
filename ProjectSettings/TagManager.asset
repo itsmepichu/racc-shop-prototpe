@@ -10,6 +10,7 @@ TagManager:
   - Money
   - MenuButton
   - PriceTag
+  - ScannerItem
   layers:
   - Default
   - TransparentFX

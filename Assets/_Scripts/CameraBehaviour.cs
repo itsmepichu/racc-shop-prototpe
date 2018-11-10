@@ -14,11 +14,11 @@ public class CameraBehaviour : MonoBehaviour {
     void Start () {
         main_camera = Camera.main;
         acept_ratio = main_camera.aspect;
-        hor_resolution = 500;
+        hor_resolution = 400;
         //hor_resolution = Screen.currentResolution.width;
 
         // Initially game was made on 16:9 aspect ratio enabling this only for 4:3 and other lower aspect ratios
-        if(main_camera.aspect < 1.4)
+        if (main_camera.aspect < 1.4)
         {
             changeCameraSize_V2();
         }

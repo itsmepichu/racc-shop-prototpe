@@ -5919,6 +5919,10 @@ Prefab:
       propertyPath: screen_name
       value: outro
       objectReference: {fileID: 0}
+    - target: {fileID: 1142216493869432, guid: 8cb0098796b112b4a99c5160debb3629, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cb0098796b112b4a99c5160debb3629, type: 2}
   m_IsPrefabParent: 0

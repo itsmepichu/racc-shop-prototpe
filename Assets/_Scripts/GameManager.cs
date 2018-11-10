@@ -217,18 +217,24 @@ public class GameManager : MonoBehaviour {
 
     public void EnableIntroScene()
     {
-        //shoppingScreen.SetActive(false);
-        //scannerScreen.SetActive(false);
-        //paymentScreen.SetActive(false);
-        //outroScreen.SetActive(false);
         introScreen.SetActive(true);
         audio_manager.PlayDialouge("intro");
         StartCoroutine(LoadLevel_2_ShoppingScreen());
     }
 
+    public void clearClones(string Tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(Tag);
+        foreach (GameObject obj in objects)
+        {
+            Destroy(obj);
+        }
+    }
+
     private IEnumerator LoadLevel_2_ShoppingScreen()
     {
         yield return new WaitForSeconds(5.5f);
+        list_checker_2.gameObject.SetActive(true);
         EnableShoppingScreen();
     }
 
@@ -263,6 +269,19 @@ public class GameManager : MonoBehaviour {
         scannerScreen.SetActive(true);
     }
 
+    public void DisableScannerScreen()
+    {
+        foodMeter.SetActive(true);
+        shoppingScreen.SetActive(true);
+        paymentScreen.SetActive(false);
+        scannerScreen.SetActive(false);
+    }
+
+    public void DisableoutroScreen()
+    {
+        outroScreen.SetActive(false);
+    }
+
     public void EnableOutroScreen()
     {
         paymentScreen.SetActive(false);
@@ -281,6 +300,12 @@ public class GameManager : MonoBehaviour {
         // First initiatilizing all sprites before showing the screen
         payment_manager.SpawnMoney(currentLevelData);
         EnablePaymentScreen();
+    }
+
+    public void ResetPaymentScores()
+    {
+        payment_done = 0;
+        paymentText.text = "0";
     }
 
     public void LoadLevelData(int level)
@@ -302,7 +327,6 @@ public class GameManager : MonoBehaviour {
         else if(level == 2)
         {
             list_checker.gameObject.SetActive(false);
-            list_checker = list_checker_2;
             EnableIntroScene();
             //EnableShoppingScreen();
         }
@@ -335,16 +359,16 @@ public class GameManager : MonoBehaviour {
                 payment_done += money;
                 paymentText.text = payment_done.ToString();
                 Debug.Log("Current Total: " + current_total + " -> Payment Done: " + payment_done);
-                if(current_total == payment_done)
-                {
-                    GameOver();
-                }
                 break;
 
             case "remove":
                 payment_done -= money;
                 paymentText.text = payment_done.ToString();
                 break;
+        }
+        if (current_total == payment_done)
+        {
+            GameOver();
         }
     }
 
@@ -358,24 +382,27 @@ public class GameManager : MonoBehaviour {
         } 
         else if(current_level == 2)
         {
-            EnableOutroScreen();
             StartCoroutine(HandleEndScreen());
-            StartCoroutine(ReloadGame(5.5f));
+            //StartCoroutine(ReloadGame(5.5f));
         }
     }
 
     public IEnumerator ReloadGame(float delay=2.0f)
     {
+        Debug.Log("Reload Game Called!!!");
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene("game");
     }
 
     public IEnumerator HandleEndScreen()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
         audio_manager.PlaySFX("game_over");
 
         yield return new WaitForSeconds(1.0f);
+        EnableOutroScreen();
+
+        yield return new WaitForSeconds(0.25f);
         audio_manager.PlayDialouge("outro");
     }
 
@@ -404,17 +431,25 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        if(current_level == 1)  // Hack: to skip writing more code for two listcheckers
+        if(current_level == 1)
         {
-            list_checker.is_watermelon_in_basket = true;
+            if (!list_checker.is_apple_in_basket || !list_checker.is_banana_in_basket)
+            {
+                animation_manager.PlayListShakeAnimation();
+                audio_manager.PlaySFX("over_budget");
+                Debug.Log("Item missing from list!!!");
+                return;
+            }
         }
-
-        if (!list_checker.is_apple_in_basket || !list_checker.is_banana_in_basket || !list_checker.is_watermelon_in_basket)
+        else if(current_level == 2)
         {
-            animation_manager.PlayListShakeAnimation();
-            audio_manager.PlaySFX("over_budget");
-            Debug.Log("Item missing from list!!!");
-            return;
+            if (!list_checker_2.is_apple_in_basket || !list_checker_2.is_banana_in_basket || !list_checker_2.is_watermelon_in_basket)
+            {
+                animation_manager.PlayListShakeAnimation();
+                audio_manager.PlaySFX("over_budget");
+                Debug.Log("Item missing from list!!!");
+                return;
+            }
         }
 
         if(current_level == 1)
@@ -434,6 +469,9 @@ public class GameManager : MonoBehaviour {
         if(current_percentage >= percentage_threshold)
         {
             cashRegisterSprite.color = Color.white;
+        } else
+        {
+            cashRegisterSprite.color = Color.grey;
         }
     }
 

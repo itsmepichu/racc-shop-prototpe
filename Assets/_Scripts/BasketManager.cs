@@ -23,7 +23,7 @@ public class BasketManager : MonoBehaviour {
         itemsInBasket = 0;
         nextPosIndexToPass = 0;
         itemPositioning = new Vector2[100];
-        items = new string[100];
+        items = new String[100];
         itemPositioning[nextPosIndexToPass] = new Vector2(nextItemXpos, nextItemYpos);
 	}
 	
@@ -50,5 +50,26 @@ public class BasketManager : MonoBehaviour {
     {
         itemsInBasket -= 1;
         items[item_index] = null;
+        //String[] tmp = new String[100] ;
+        //int start = 0;
+        //int end = items.Length-1;
+        //for(int i = 0; i < items.Length; i++)
+        //{
+        //    if (items[i] != null)
+        //    {
+        //        tmp[start] = items[i];
+        //        start++;
+        //    }
+        //    else
+        //    {
+        //        tmp[end] = items[i];
+        //        end--;
+        //    }
+        //}
+
+        //for (int i = 0; i < items.Length; i++)
+        //{
+        //    items[i] = tmp[i];
+        //}
     }
 }
