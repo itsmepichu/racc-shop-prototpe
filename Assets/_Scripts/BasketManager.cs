@@ -18,7 +18,7 @@ public class BasketManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        nextItemXpos = -2.0f;
+        nextItemXpos = -2.35f;
         nextItemYpos = -3.5f;
         itemsInBasket = 0;
         nextPosIndexToPass = 0;
@@ -41,7 +41,15 @@ public class BasketManager : MonoBehaviour {
     {
         itemsInBasket += 1;
         nextPosIndexToPass += 1;
-        nextItemXpos += 0.75f;
+        if(nextItemXpos <= 3.85)
+        {
+            nextItemXpos += 0.65f;
+        } else
+        {
+            nextItemXpos = -2.35f;
+            nextItemYpos -= 1.25f;
+        }
+        
         itemPositioning[nextPosIndexToPass] = new Vector2(nextItemXpos, nextItemYpos);
         items[item_index] = item_name;
     }

@@ -170,7 +170,7 @@ public class Item : MonoBehaviour {
         if(!didTouchBasket) // actions that are happening to the fruit outside the basket
         {
             // make fruit bigger on mouse down
-            if (isItemSelected && this.transform.localScale.x <= 1.6f)
+            if (isItemSelected && this.transform.localScale.x <= 1.4f)
             {
                 this.transform.localScale = new Vector3(this.transform.localScale.x + scaleUpRatio, this.transform.localScale.y + scaleUpRatio, this.transform.localScale.z);
             }
