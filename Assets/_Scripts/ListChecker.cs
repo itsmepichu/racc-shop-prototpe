@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ListChecker : MonoBehaviour {
@@ -65,13 +66,14 @@ public class ListChecker : MonoBehaviour {
 
     public void CheckList()
     {
-        if(game_manager.current_level == 1)
+        string[] tmpArray = basket_manager.itemSlugInBasket.Select(i => i.ToString()).ToArray();
+        if (game_manager.current_level == 1)
         {
             is_banana_in_basket = false;
             is_apple_in_basket = false;
-            for (int i = 0; i < basket_manager.items.Length; ++i)
+            for (int i = 0; i < tmpArray.Length; ++i)
             {
-                if (basket_manager.items[i] == "Apple - normal" || basket_manager.items[i] == "Apple - green")
+                if (tmpArray[i] == "Apple - normal" || tmpArray[i] == "Apple - green")
                 {
                     is_apple_in_basket = true;
                     if (!apple_tick.activeSelf)
@@ -79,7 +81,7 @@ public class ListChecker : MonoBehaviour {
                         audio_manager.PlaySFX("tick");
                     }
                 }
-                if (basket_manager.items[i] == "Bananas")
+                if (tmpArray[i] == "Bananas")
                 {
                     is_banana_in_basket = true;
                     if (!banana_tick.activeSelf)
@@ -96,9 +98,10 @@ public class ListChecker : MonoBehaviour {
             is_banana_in_basket = false;
             is_apple_in_basket = false;
             is_watermelon_in_basket = false;
-            for (int i = 0; i < basket_manager.items.Length; ++i)
+            for (int i = 0; i < tmpArray.Length; ++i)
             {
-                if (basket_manager.items[i] == "Apple - normal" || basket_manager.items[i] == "Apple - green" || basket_manager.items[i] == "Apple - 3 for 2")
+                Debug.Log(i + " -> " + tmpArray[i]);
+                if (tmpArray[i] == "Apple - normal" || tmpArray[i] == "Apple - green" || tmpArray[i] == "Apple - 3 for 2")
                 {
                     is_apple_in_basket = true;
                     if (!apple_tick_2.activeSelf)
@@ -106,7 +109,7 @@ public class ListChecker : MonoBehaviour {
                         audio_manager.PlaySFX("tick");
                     }
                 }
-                if (basket_manager.items[i] == "Bananas")
+                if (tmpArray[i] == "Bananas")
                 {
                     is_banana_in_basket = true;
                     if (!banana_tick_2.activeSelf)
@@ -114,7 +117,7 @@ public class ListChecker : MonoBehaviour {
                         audio_manager.PlaySFX("tick");
                     }
                 }
-                if (basket_manager.items[i] == "Watermelon")
+                if (tmpArray[i] == "Watermelon")
                 {
                     is_watermelon_in_basket = true;
                     if (!watermelon_tick_2.activeSelf)

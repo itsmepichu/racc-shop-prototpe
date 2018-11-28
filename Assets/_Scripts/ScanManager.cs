@@ -48,7 +48,7 @@ public class ScanManager : MonoBehaviour {
             Vector3 newPos = item.transform.position;
             if(!tmpScannerItem.did_touch_scanner)
             {
-                newPos.x += 2.0f;
+                newPos.x += 2.25f;
                 tmpScannerItem.newPosToMove = newPos;
                 tmpScannerItem.move_this_item = true;
             }

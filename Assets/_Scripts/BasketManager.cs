@@ -15,6 +15,7 @@ public class BasketManager : MonoBehaviour {
 
     public Vector2[] itemPositioning;
     public String[] items;
+    public List<string> itemSlugInBasket;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +25,7 @@ public class BasketManager : MonoBehaviour {
         nextPosIndexToPass = 0;
         itemPositioning = new Vector2[100];
         items = new String[100];
+        itemSlugInBasket = new List<string>();
         itemPositioning[nextPosIndexToPass] = new Vector2(nextItemXpos, nextItemYpos);
 	}
 	
@@ -41,6 +43,7 @@ public class BasketManager : MonoBehaviour {
     {
         itemsInBasket += 1;
         nextPosIndexToPass += 1;
+        itemSlugInBasket.Add(item_name);
         if(nextItemXpos <= 3.85)
         {
             nextItemXpos += 0.65f;
@@ -54,10 +57,11 @@ public class BasketManager : MonoBehaviour {
         items[item_index] = item_name;
     }
 
-    public void removeItemFromBasket(int item_index)
+    public void removeItemFromBasket(int item_index, string item_name)
     {
         itemsInBasket -= 1;
         items[item_index] = null;
+        itemSlugInBasket.Remove(item_name);
         //String[] tmp = new String[100] ;
         //int start = 0;
         //int end = items.Length-1;

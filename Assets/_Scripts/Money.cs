@@ -71,39 +71,47 @@ public class Money : MonoBehaviour {
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    Debug.Log("OnTriggerEnter: " + collision.gameObject.name);
-    //    if (collision.gameObject.name == "Hand")
-    //    {
-    //        isMoneyInHand = true;
-    //    }
-    //    if (collision.gameObject.name == "Wallet")
-    //    {
-    //        isMoneyInWallet = true;
-    //    }
-    //}
-
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerExit: " + collision.gameObject.name);
-        if(isMoneySelected)
+        Debug.Log("OnTriggerEnter: " + collision.gameObject.name);
+        if (isMoneySelected)
         {
             if (collision.gameObject.name == "_Hand")
             {
-                isMoneyInHand = false;
-                isMoneyInWallet = true;
-                game_manager.updatePaymentBill(this.value, "remove");
+                isMoneyInHand = true;
+                isMoneyInWallet = false;
+                game_manager.updatePaymentBill(this.value, "add");
             }
             if (collision.gameObject.name == "Wallet")
             {
-                isMoneyInWallet = false;
-                isMoneyInHand = true;
-                game_manager.updatePaymentBill(this.value, "add");
+                isMoneyInWallet = true;
+                isMoneyInHand = false;
+                game_manager.updatePaymentBill(this.value, "remove");
             }
         }
         isMoneySelected = false;
     }
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    Debug.Log("OnTriggerExit: " + collision.gameObject.name);
+    //    if(isMoneySelected)
+    //    {
+    //        if (collision.gameObject.name == "_Hand")
+    //        {
+    //            isMoneyInHand = false;
+    //            isMoneyInWallet = true;
+    //            game_manager.updatePaymentBill(this.value, "remove");
+    //        }
+    //        if (collision.gameObject.name == "Wallet")
+    //        {
+    //            isMoneyInWallet = false;
+    //            isMoneyInHand = true;
+    //            game_manager.updatePaymentBill(this.value, "add");
+    //        }
+    //    }
+    //    isMoneySelected = false;
+    //}
 
     private void MoneyMovementController()
     {

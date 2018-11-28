@@ -50,8 +50,12 @@ public class ScannerItem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        is_item_selected = true;
-        audio_manager.PlaySFX("tap");
+        Debug.Log(this.transform.position.x);
+        if(this.transform.position.x >= -3.0f)
+        {
+            is_item_selected = true;
+            audio_manager.PlaySFX("tap");
+        }
     }
 
     private void OnMouseUp()

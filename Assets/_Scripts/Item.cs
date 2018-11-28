@@ -150,7 +150,7 @@ public class Item : MonoBehaviour {
         {
             didTouchBasket = false;
             canRemoveFromBasket = false;
-            basket_manager.removeItemFromBasket(thisItemNo);
+            basket_manager.removeItemFromBasket(thisItemNo, itemName);
             game_manager.setCurrentScore(this.price, this.percentage, "remove");
             if (game_manager.current_level == 1)
             {
